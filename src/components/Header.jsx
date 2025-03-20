@@ -4,6 +4,7 @@ import { Squash as Hamburger } from "hamburger-react";
 import HeaderCSS from "../css/Header.module.css";
 import data from "../Data";
 
+
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -13,7 +14,7 @@ function Header() {
 
   return (
     <div className={HeaderCSS.container}>
-      <Link to="/" style={{ textDecoration: "none", color: "white" }}>
+      <Link to="/" style={{ textDecoration: "none", color: "#556477" }}>
         <h1 style={{ fontWeight: "800" }}>{data.HeaderTitle}</h1>
       </Link>
       <div className={HeaderCSS.hamburger}>
@@ -24,6 +25,11 @@ function Header() {
           <li>
             <Link to="/" onClick={handleLinkClick}>
               Home
+            </Link>
+          </li>
+          <li>
+            <Link to="/gallery" onClick={handleLinkClick}>
+              Gallery
             </Link>
           </li>
           <li>

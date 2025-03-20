@@ -1,0 +1,198 @@
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #efeae1;
+}
+
+/* Gallery Section */
+.gallerySection {
+  padding: 2rem;
+  background-color: #efeae1;
+}
+
+.featuredArt {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.leftFrameContainer {
+  width: 28%;
+  display: flex;
+  justify-content: center;
+}
+
+.framedPortrait {
+  width: 100%;
+  height: auto;
+  max-height: 380px;
+  object-fit: contain;
+}
+
+.quoteContainer {
+  width: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1rem;
+  z-index: 1;
+}
+
+.quote {
+  font-size: 1.5rem;
+  font-style: italic;
+  color: #4a5568;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.rightFramesContainer {
+  width: 28%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.topRightFrame {
+  width: 100%;
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.bottomRightFrame {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-right: 20vw;
+}
+
+.framedBust {
+  width: 90%;
+  height: auto;
+  object-fit: contain;
+}
+
+.framedFlowers {
+  width: 80%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Works Section */
+.worksSection {
+  padding: 2rem;
+  background-color: #546e7a;
+  color: white;
+}
+
+.sectionTitle {
+  max-width: 1200px;
+  margin: 0 auto 1.5rem;
+  padding-left: 1rem;
+  font-size: 1.5rem;
+}
+
+.worksGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.workItem img {
+  width: 100%;
+  height: auto;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.workItem img:hover {
+  transform: scale(1.03);
+}
+
+/* About Section */
+.aboutSection {
+  padding: 3rem 2rem;
+  background-color: #efeae1;
+}
+
+.aboutContainer {
+  display: flex;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: center;
+}
+
+.aboutImageContainer {
+  width: 25%;
+  padding-right: 2rem;
+}
+
+.aboutImage {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.aboutContent {
+  width: 75%;
+}
+
+.aboutHeading {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #424242;
+}
+
+.aboutText {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #616161;
+  text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .featuredArt {
+    flex-direction: column;
+  }
+  
+  .leftFrameContainer, .quoteContainer, .rightFramesContainer {
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+  
+  .framedPortrait, .framedBust, .framedFlowers {
+    max-width: 80%;
+  }
+
+  .framedFlowers {
+    display: none;
+  }
+  
+  .worksGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .aboutContainer {
+    flex-direction: column;
+  }
+  
+  .aboutImageContainer {
+    width: 60%;
+    margin-bottom: 2rem;
+    padding-right: 0;
+  }
+  
+  .aboutContent {
+    width: 100%;
+    text-align: center;
+  }
+}

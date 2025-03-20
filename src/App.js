@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./index.css";
-import Home from "./pages/Home";
+import PortfolioPage from "./pages/PortfolioPage";
 import About from "./pages/About";
 import NotFound from "./pages/NotFound";
+import HomePage from "./pages/HomePage";
 
 const App = () => {
   useEffect(() => {
@@ -22,7 +23,8 @@ const App = () => {
     <div className="App">
       <Router>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<HomePage />} />
+          <Route path="/gallery" element={<PortfolioPage />} />
           <Route path="/about" element={<About />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

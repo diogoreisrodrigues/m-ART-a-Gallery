@@ -3,8 +3,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
-    background-color: #222831;
-    color: white;
+    color: #556477;
     position: relative;
 }
 
@@ -19,7 +18,7 @@
     position: fixed;
     top: 0;
     right: -100%;
-    width: 100%;
+    width: 35%;
     height: 100%;
     background-color: #393E46;
     padding: 0;
@@ -30,7 +29,7 @@
 }
 
 .navOpen {
-    right: 0;
+    right: 0%;
 }
 
 nav ul {

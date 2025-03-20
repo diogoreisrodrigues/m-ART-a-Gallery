@@ -4,7 +4,7 @@ import Portfolio from "../components/Portfolio";
 import Footer from "../components/Footer";
 import ScrollToTop from "../components/ScrollToTop";
 
-function Home() {
+function PortfolioPage() {
   const [showScroll, setShowScroll] = useState(false);
 
   useEffect(() => {
@@ -32,4 +32,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default PortfolioPage;

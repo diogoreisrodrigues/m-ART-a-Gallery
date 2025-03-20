@@ -11,10 +11,22 @@ const images = importAll(
 
 function Portfolio() {
   return (
-    <div className={PortfolioCSS.gridContainer}>
-      {images.map((src, index) => (
-        <ImageWrapper key={index} src={src} index={index} />
-      ))}
+    <div className={PortfolioCSS.masonryContainer}>
+      <div className={PortfolioCSS.masonryColumn}>
+        {images.filter((_, i) => i % 3 === 0).map((src, index) => (
+          <ImageWrapper key={index * 3} src={src} index={index * 3} />
+        ))}
+      </div>
+      <div className={PortfolioCSS.masonryColumn}>
+        {images.filter((_, i) => i % 3 === 1).map((src, index) => (
+          <ImageWrapper key={index * 3 + 1} src={src} index={index * 3 + 1} />
+        ))}
+      </div>
+      <div className={PortfolioCSS.masonryColumn}>
+        {images.filter((_, i) => i % 3 === 2).map((src, index) => (
+          <ImageWrapper key={index * 3 + 2} src={src} index={index * 3 + 2} />
+        ))}
+      </div>
     </div>
   );
 }
