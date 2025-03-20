@@ -1,0 +1,132 @@
+.carouselContainer {
+    padding: 2rem;
+    background-color: #546e7a;
+    color: white;
+  }
+  
+  .sectionTitle {
+    max-width: 1200px;
+    margin: 0 auto 1.5rem;
+    padding-left: 1rem;
+    font-size: 1.5rem;
+  }
+  
+  .carousel {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    height: auto;
+    padding: 0 10px;
+  }
+  
+  .carouselContent {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    padding: 20px 0 40px;
+  }
+  
+  .slideTrack {
+    display: grid;
+    gap: 16px;
+    width: 100%;
+    transition: transform 0.5s ease-in-out;
+  }
+  
+  .slideItem {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+  }
+  
+  .carouselImage {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+    border-radius: 4px;
+    transition: transform 0.3s ease;
+  }
+  
+  .carouselImage:hover {
+    transform: scale(1.03);
+  }
+  
+  .carouselButton {
+    background-color: rgba(255, 255, 255, 0.3);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    transition: background-color 0.3s ease;
+    flex-shrink: 0;
+  }
+  
+  .carouselButton:hover:not(.disabled) {
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+  
+  .carouselButton.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  .prevButton {
+    margin-right: 10px;
+  }
+  
+  .nextButton {
+    margin-left: 10px;
+  }
+  
+  .indicators {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 16px;
+  }
+  
+  .indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .indicator.active {
+    background-color: white;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .carouselImage {
+      height: 240px;
+    }
+    
+    .carouselButton {
+      width: 32px;
+      height: 32px;
+    }
+    
+    .indicator {
+      width: 10px;
+      height: 10px;
+    }
+  }

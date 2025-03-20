@@ -5,6 +5,7 @@ import Footer from "../components/Footer";
 import ScrollToTop from "../components/ScrollToTop";
 import data from "../Data";
 import styles from "../css/Home.module.css";
+import ImageCarousel from "../components/ImageCarousel";
 
 // Import profile image
 import profileImage from "../assets/profile/profile.jpeg"; // Update this path if needed
@@ -62,21 +63,8 @@ function Home() {
         </div>
       </section>
       
-      {/* Works Section */}
-      <section className={styles.worksSection}>
-        <h2 className={styles.sectionTitle}>My works →</h2>
-        <div className={styles.worksGrid}>
-          <div className={styles.workItem}>
-            <img src={portrait2} alt="Portrait artwork" />
-          </div>
-          <div className={styles.workItem}>
-            <img src={sunset} alt="Sunset painting" />
-          </div>
-          <div className={styles.workItem}>
-            <img src={rose} alt="Rose painting" />
-          </div>
-        </div>
-      </section>
+      {/* Works Section - Now using the carousel component */}
+      <ImageCarousel />
       
       {/* About Section */}
       <section className={styles.aboutSection}>
