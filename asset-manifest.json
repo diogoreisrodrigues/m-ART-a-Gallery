@@ -1,0 +1,33 @@
+{
+  "files": {
+    "main.css": "/m-ART-a-Gallery/static/css/main.ff6b5193.css",
+    "main.js": "/m-ART-a-Gallery/static/js/main.6cc2338c.js",
+    "static/js/453.fd663ea2.chunk.js": "/m-ART-a-Gallery/static/js/453.fd663ea2.chunk.js",
+    "static/media/eye.jpeg": "/m-ART-a-Gallery/static/media/eye.0653bfbea90bc304bfb6.jpeg",
+    "static/media/portrait.png": "/m-ART-a-Gallery/static/media/portrait.0192d54cb3e19e5e0d66.png",
+    "static/media/face.jpeg": "/m-ART-a-Gallery/static/media/face.98a0efa0702f96a8b8df.jpeg",
+    "static/media/profile.jpeg": "/m-ART-a-Gallery/static/media/profile.beaac56a1acd57999429.jpeg",
+    "static/media/flowers2.jpeg": "/m-ART-a-Gallery/static/media/flowers2.98265ecce1f81b85aa41.jpeg",
+    "static/media/PortaitMarta.jpeg": "/m-ART-a-Gallery/static/media/PortaitMarta.cfc6bb98f8e046a7ac6e.jpeg",
+    "static/media/face4.jpeg": "/m-ART-a-Gallery/static/media/face4.c04fd8834b080b849f7c.jpeg",
+    "static/media/FireWater.png": "/m-ART-a-Gallery/static/media/FireWater.9a8bd25d331c7f0bb665.png",
+    "static/media/Landscape.jpeg": "/m-ART-a-Gallery/static/media/Landscape.e097d908cc4e72b96075.jpeg",
+    "static/media/face5.jpeg": "/m-ART-a-Gallery/static/media/face5.45476a0dd96ffb27a6ab.jpeg",
+    "static/media/flowers.png": "/m-ART-a-Gallery/static/media/flowers.2672f1101868a88eb808.png",
+    "static/media/roses.jpeg": "/m-ART-a-Gallery/static/media/roses.57528db47f28bbd9ab11.jpeg",
+    "static/media/portaite.jpeg": "/m-ART-a-Gallery/static/media/portaite.f935d0e086291e83bf65.jpeg",
+    "static/media/3paintings.jpeg": "/m-ART-a-Gallery/static/media/3paintings.f59173f3c470d549c801.jpeg",
+    "static/media/face2.jpeg": "/m-ART-a-Gallery/static/media/face2.d5db30055e5842f0b451.jpeg",
+    "static/media/Flowers.jpeg": "/m-ART-a-Gallery/static/media/Flowers.c3ce2f9201de1be2ac78.jpeg",
+    "static/media/faces3.jpeg": "/m-ART-a-Gallery/static/media/faces3.787dd206c21947260edd.jpeg",
+    "static/media/404.svg": "/m-ART-a-Gallery/static/media/404.f7a1746b6c32d82a3f32c77fc778e768.svg",
+    "index.html": "/m-ART-a-Gallery/index.html",
+    "main.ff6b5193.css.map": "/m-ART-a-Gallery/static/css/main.ff6b5193.css.map",
+    "main.6cc2338c.js.map": "/m-ART-a-Gallery/static/js/main.6cc2338c.js.map",
+    "453.fd663ea2.chunk.js.map": "/m-ART-a-Gallery/static/js/453.fd663ea2.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ff6b5193.css",
+    "static/js/main.6cc2338c.js"
+  ]
+}
