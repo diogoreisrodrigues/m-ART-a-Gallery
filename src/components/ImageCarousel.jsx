@@ -1,5 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
 import styles from '../css/ImageCarousel.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
@@ -63,6 +63,7 @@ const ImageCarousel = () => {
   };
 
   // Generate visible slides
+  // eslint-disable-next-line no-unused-vars
   const visibleSlides = images.slice(currentIndex, currentIndex + slidesToShow);
 
   // Generate dot indicators (one for each possible starting position)

@@ -1,9 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
 import ScrollToTop from "../components/ScrollToTop";
-import data from "../Data";
 import styles from "../css/Home.module.css";
 import ImageCarousel from "../components/ImageCarousel";
 
@@ -14,9 +10,6 @@ import profileImage from "../assets/profile/profile.jpeg"; // Update this path i
 import framedPortrait from "../assets/HomePaintings/portrait.png"; 
 import framedBust from "../assets/HomePaintings/FireWater.png";
 import framedFlowers from "../assets/HomePaintings/flowers.png";
-import portrait2 from "../assets/images/face2.jpeg";
-import sunset from "../assets/images/Landscape.jpeg";
-import rose from "../assets/images/roses.jpeg";
 
 function Home() {
   const [showScroll, setShowScroll] = useState(false);
