@@ -2,7 +2,6 @@
   "name": "portfolio-for-artists",
   "version": "1.0.0",
   "private": true,
-  "homepage": "https://diogoreisrodrigues.github.io/m-ART-a-Gallery",
   "dependencies": {
     "@fortawesome/free-solid-svg-icons": "^6.2.1",
     "@fortawesome/react-fontawesome": "github:fortawesome/react-fontawesome",
@@ -11,7 +10,6 @@
     "@testing-library/user-event": "^13.5.0",
     "file-saver": "^2.0.5",
     "framer-motion": "^11.2.11",
-    "gh-pages": "^6.3.0",
     "hamburger-react": "^2.5.1",
     "jszip": "^3.10.1",
     "react": "^18.2.0",
@@ -25,9 +23,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
@@ -49,7 +45,9 @@
   },
   "description": "A website showcasing the artistic works of Marta Vieira, a talented artist from Portugal. This portfolio website provides an elegant platform for displaying her artwork to the world.",
   "main": "index.js",
-  "devDependencies": {},
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/diogoreisrodrigues/m-ART-a-Gallery.git"
