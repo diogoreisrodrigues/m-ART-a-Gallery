@@ -1,0 +1,101 @@
+.adminContainer {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.adminContent {
+  flex: 1;
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.instructions {
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background-color: #f5f5f5;
+  border-left: 4px solid #ebaaaf;
+  border-radius: 4px;
+}
+
+.message {
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  border-radius: 4px;
+}
+
+.success {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+  border-left: 4px solid #2e7d32;
+}
+
+.error {
+  background-color: #ffebee;
+  color: #c62828;
+  border-left: 4px solid #c62828;
+}
+
+.uploadForm {
+  background-color: #efeae1;
+  padding: 2rem;
+  border-radius: 8px;
+}
+
+.formGroup {
+  margin-bottom: 1.5rem;
+}
+
+.formGroup label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #556477;
+}
+
+.formGroup input,
+.formGroup textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.fileInput {
+  background-color: white;
+}
+
+.previewContainer {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.preview {
+  max-width: 300px;
+  max-height: 300px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.uploadButton {
+  background-color: #ebaaaf;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.uploadButton:hover {
+  background-color: #d99599;
+}
+
+.uploadButton:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}

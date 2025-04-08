@@ -46,5 +46,18 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "description": "A website showcasing the artistic works of Marta Vieira, a talented artist from Portugal. This portfolio website provides an elegant platform for displaying her artwork to the world.",
+  "main": "index.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/diogoreisrodrigues/m-ART-a-Gallery.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/diogoreisrodrigues/m-ART-a-Gallery/issues"
   }
 }

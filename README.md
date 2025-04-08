@@ -50,6 +50,13 @@ A modern, responsive web application showcasing the artistic works of Marta Viei
 - `/src/css`: CSS modules for styling
 - `/src/Data.js`: Centralized content configuration
 
+## Deploy Project
+
+   ```bash
+   npm run deploy
+   ```
+
+
 ## Contact
 
 For any inquiries about the artwork, please contact Marta Vieira at martavieira142004@gmail.com
