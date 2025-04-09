@@ -12,13 +12,14 @@
     z-index: 1001;
 }
 
+
 .nav {
     display: flex;
     flex-direction: column;
     position: fixed;
     top: 0;
     right: -100%;
-    width: 35%;
+    width: 30%;
     height: 100%;
     background-color: #393E46;
     padding: 0;
@@ -50,4 +51,28 @@ nav ul li {
 nav ul li a {
     color: white;
     text-decoration: none;
+}
+
+/* Add responsive styles for mobile devices */
+@media (max-width: 768px) {
+    .nav {
+        width: 60%; /* Wider sidebar on mobile */
+    }
+    
+    nav ul li {
+        margin: 30px; /* Slightly reduced margins for better spacing */
+        font-size: 22px; /* Slightly smaller font size */
+    }
+}
+
+/* Extra small devices */
+@media (max-width: 480px) {
+    .nav {
+        width: 75%; /* Even wider on very small screens */
+    }
+    
+    nav ul li {
+        margin: 25px;
+        font-size: 20px;
+    }
 }

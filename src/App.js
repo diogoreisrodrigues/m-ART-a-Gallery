@@ -7,6 +7,7 @@ import NotFound from "./pages/NotFound";
 import HomePage from "./pages/HomePage";
 import AdminPage from "./pages/AdminPage";
 import VirtualGallery from "./pages/VirtualGallery";
+import CommissionsPage from "./pages/CommissionsPage";
 
 const App = () => {
   useEffect(() => {
@@ -30,6 +31,7 @@ const App = () => {
           <Route path="/about" element={<About />} />
           <Route path="/virtual-gallery" element={<VirtualGallery />} />
           <Route path="/admin-marta-secret" element={<AdminPage />} />
+          <Route path="/commissions" element={<CommissionsPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>
