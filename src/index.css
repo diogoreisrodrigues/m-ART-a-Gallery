@@ -5,8 +5,12 @@
   padding: 0;
 }
 
+body {
+  background-color: #efeae1;
+}
+
 .App {
   font-family: "Aleo", serif;
   font-optical-sizing: auto;
-  background-color: #F2E9E1;
+  background-color: #efeae1;
 }

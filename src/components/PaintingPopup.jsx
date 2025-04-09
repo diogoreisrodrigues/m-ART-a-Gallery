@@ -7,6 +7,7 @@ const PaintingPopup = ({ painting, onClose, onInterest }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [paintingDetails, setPaintingDetails] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [imageLoaded, setImageLoaded] = useState(false);
 
   useEffect(() => {
     if (painting && painting.id) {
@@ -21,7 +22,6 @@ const PaintingPopup = ({ painting, onClose, onInterest }) => {
           }
           
           const data = await response.json();
-          console.log('Painting details:', data); // Debug log
           setPaintingDetails(data);
         } catch (error) {
           console.error('Error fetching painting details:', error);
@@ -40,6 +40,30 @@ const PaintingPopup = ({ painting, onClose, onInterest }) => {
     }
   }, [painting]);
 
+  // Reset image loaded state when changing images
+  useEffect(() => {
+    setImageLoaded(false);
+  }, [currentImageIndex]);
+  
+  // Handle keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (!painting) return; // Skip if no painting
+      
+      if (e.key === 'ArrowRight') {
+        nextImage();
+      } else if (e.key === 'ArrowLeft') {
+        prevImage();
+      } else if (e.key === 'Escape') {
+        onClose();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []); // We'll handle dependencies differently
+
+  // Early return after all hooks
   if (!painting) return null;
   
   // Use the detailed painting data if available, otherwise use the passed painting
@@ -60,10 +84,6 @@ const PaintingPopup = ({ painting, onClose, onInterest }) => {
     images = [{ image_url: imagePath }];
   }
   
-  // Debug log
-  console.log('Images array:', images);
-  console.log('Current image index:', currentImageIndex);
-  
   const nextImage = () => {
     if (images.length > 1) {
       setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
@@ -80,10 +100,14 @@ const PaintingPopup = ({ painting, onClose, onInterest }) => {
   const safeImageIndex = Math.min(currentImageIndex, images.length - 1);
   const currentImage = images[safeImageIndex] || {};
 
+  const handleImageLoad = () => {
+    setImageLoaded(true);
+  };
+
   return (
     <div className={styles.overlay} onClick={onClose}>
       <div className={styles.popup} onClick={(e) => e.stopPropagation()}>
-        <button className={styles.closeButton} onClick={onClose}>
+        <button className={styles.closeButton} onClick={onClose} aria-label="Close">
           <FontAwesomeIcon icon={faTimes} />
         </button>
         
@@ -99,37 +123,42 @@ const PaintingPopup = ({ painting, onClose, onInterest }) => {
                   src={currentImage.image_url} 
                   alt={displayPainting.title} 
                   className={styles.image}
+                  style={{ opacity: imageLoaded ? 1 : 0 }}
+                  onLoad={handleImageLoad}
                 />
                 
                 {images.length > 1 && (
-                  <div className={styles.imageNavigation}>
-                    <button 
-                      className={`${styles.navButton} ${styles.prevButton}`}
-                      onClick={prevImage}
-                      aria-label="Previous image"
-                    >
-                      <FontAwesomeIcon icon={faChevronLeft} />
-                    </button>
-                    
-                    <div className={styles.imageDots}>
-                      {images.map((_, index) => (
-                        <button
-                          key={index}
-                          className={`${styles.imageDot} ${index === safeImageIndex ? styles.activeDot : ''}`}
-                          onClick={() => setCurrentImageIndex(index)}
-                          aria-label={`View image ${index + 1}`}
-                        />
-                      ))}
+                  <>
+                    <div className={styles.imageNavigation}>
+                      <button 
+                        className={`${styles.navButton} ${styles.prevButton}`}
+                        onClick={prevImage}
+                        aria-label="Previous image"
+                      >
+                        <FontAwesomeIcon icon={faChevronLeft} />
+                      </button>
+                      
+                      <div className={styles.imageDots}>
+                        {images.map((_, index) => (
+                          <button
+                            key={index}
+                            className={`${styles.imageDot} ${index === safeImageIndex ? styles.activeDot : ''}`}
+                            onClick={() => setCurrentImageIndex(index)}
+                            aria-label={`View image ${index + 1}`}
+                          />
+                        ))}
+                      </div>
+                      
+                      <button 
+                        className={`${styles.navButton} ${styles.nextButton}`}
+                        onClick={nextImage}
+                        aria-label="Next image"
+                      >
+                        <FontAwesomeIcon icon={faChevronRight} />
+                      </button>
                     </div>
                     
-                    <button 
-                      className={`${styles.navButton} ${styles.nextButton}`}
-                      onClick={nextImage}
-                      aria-label="Next image"
-                    >
-                      <FontAwesomeIcon icon={faChevronRight} />
-                    </button>
-                  </div>
+                  </>
                 )}
               </>
             )}
