@@ -10,8 +10,8 @@ function AdminPage() {
     year: new Date().getFullYear().toString(),
     adminPassword: ""
   });
-  const [previewImage, setPreviewImage] = useState(null);
-  const [imageBase64, setImageBase64] = useState(null);
+  const [previewImages, setPreviewImages] = useState([]);
+  const [imagesBase64, setImagesBase64] = useState([]);
   const [isUploading, setIsUploading] = useState(false);
   const [message, setMessage] = useState(null);
   const fileInputRef = useRef(null);
@@ -25,23 +25,38 @@ function AdminPage() {
   };
 
   const handleFileChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      // Create a preview
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setPreviewImage(reader.result);
-        setImageBase64(reader.result);
-      };
-      reader.readAsDataURL(file);
-    }
+    const files = Array.from(e.target.files);
+    if (files.length === 0) return;
+
+    // Process each file
+    const newPreviewImages = [];
+    const newImagesBase64 = [];
+    
+    const processFile = (file, index) => {
+      return new Promise((resolve) => {
+        const reader = new FileReader();
+        reader.onloadend = () => {
+          newPreviewImages[index] = reader.result;
+          newImagesBase64[index] = reader.result;
+          resolve();
+        };
+        reader.readAsDataURL(file);
+      });
+    };
+
+    // Process all files in parallel
+    Promise.all(files.map((file, index) => processFile(file, index)))
+      .then(() => {
+        setPreviewImages(newPreviewImages);
+        setImagesBase64(newImagesBase64);
+      });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     
-    if (!painting.title || !imageBase64) {
-      setMessage({ type: 'error', text: 'Please provide a title and image' });
+    if (!painting.title || imagesBase64.length === 0) {
+      setMessage({ type: 'error', text: 'Please provide a title and at least one image' });
       return;
     }
 
@@ -53,7 +68,7 @@ function AdminPage() {
         method: 'POST',
         body: JSON.stringify({
           ...painting,
-          imageBase64
+          images: imagesBase64
         })
       });
       
@@ -70,8 +85,8 @@ function AdminPage() {
         year: new Date().getFullYear().toString(),
         adminPassword: painting.adminPassword
       });
-      setPreviewImage(null);
-      setImageBase64(null);
+      setPreviewImages([]);
+      setImagesBase64([]);
       if (fileInputRef.current) {
         fileInputRef.current.value = "";
       }
@@ -102,18 +117,24 @@ function AdminPage() {
         
         <form onSubmit={handleSubmit} className={styles.uploadForm}>
           <div className={styles.formGroup}>
-            <label>Image File:</label>
+            <label>Image Files (first image will be the main thumbnail):</label>
             <input 
               type="file" 
               accept="image/*" 
               onChange={handleFileChange}
               ref={fileInputRef}
               className={styles.fileInput}
+              multiple
               required
             />
-            {previewImage && (
-              <div className={styles.previewContainer}>
-                <img src={previewImage} alt="Preview" className={styles.preview} />
+            {previewImages.length > 0 && (
+              <div className={styles.previewsContainer}>
+                {previewImages.map((preview, index) => (
+                  <div key={index} className={styles.previewContainer}>
+                    <img src={preview} alt={`Preview ${index + 1}`} className={styles.preview} />
+                    {index === 0 && <span className={styles.primaryBadge}>Primary</span>}
+                  </div>
+                ))}
               </div>
             )}
           </div>

@@ -5,7 +5,7 @@
 
 [dev]
   command = "npm start"
-  port = 3000
+  port = 3009
   publish = "build"
   functions = "netlify/functions"
 

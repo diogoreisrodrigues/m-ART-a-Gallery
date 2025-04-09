@@ -34,7 +34,7 @@ A modern, responsive web application showcasing the artistic works of Marta Viei
 
 3. **Run the development server**
    ```bash
-   npm start
+   npx netlify dev
    ```
 
 4. **Build for production**

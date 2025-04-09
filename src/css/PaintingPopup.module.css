@@ -134,3 +134,62 @@
       max-height: 40vh;
     }
   }
+
+/* Add these styles to your existing PaintingPopup.module.css */
+
+.imageNavigation {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.navButton {
+  background-color: rgba(255, 255, 255, 0.7);
+  color: #556477;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.navButton:hover {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.imageDots {
+  display: flex;
+  gap: 8px;
+}
+
+.imageDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.activeDot {
+  background-color: #ebaaaf;
+}
+
+.loadingIndicator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  color: #556477;
+  font-style: italic;
+}
