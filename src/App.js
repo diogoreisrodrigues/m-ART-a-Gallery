@@ -5,7 +5,8 @@ import PortfolioPage from "./pages/PortfolioPage";
 import About from "./pages/About";
 import NotFound from "./pages/NotFound";
 import HomePage from "./pages/HomePage";
-import AdminPage from "./pages/AdminPage"; // Import the admin page
+import AdminPage from "./pages/AdminPage";
+import VirtualGallery from "./pages/VirtualGallery";
 
 const App = () => {
   useEffect(() => {
@@ -27,6 +28,7 @@ const App = () => {
           <Route path="/" element={<HomePage />} />
           <Route path="/gallery" element={<PortfolioPage />} />
           <Route path="/about" element={<About />} />
+          <Route path="/virtual-gallery" element={<VirtualGallery />} />
           <Route path="/admin-marta-secret" element={<AdminPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
