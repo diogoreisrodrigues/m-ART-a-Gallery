@@ -60,18 +60,19 @@ exports.handler = async (event, context) => {
       .from('paintings')
       .getPublicUrl(filename);
 
+    // Prepare the painting data
+    const paintingData = { 
+      title: data.title,
+      description: data.description || '',
+      year: data.year || new Date().getFullYear().toString(),
+      path: filename,
+      image_url: urlData.publicUrl
+    };
+
     // Store painting data in Supabase database
-    const { data: paintingData, error: dbError } = await supabase
+    const { data: insertedData, error: dbError } = await supabase
       .from('paintings')
-      .insert([
-        { 
-          title: data.title,
-          description: data.description || '',
-          year: data.year || new Date().getFullYear().toString(),
-          path: filename,
-          image_url: urlData.publicUrl
-        }
-      ]);
+      .insert([paintingData]);
 
     if (dbError) {
       return { 
@@ -85,10 +86,11 @@ exports.handler = async (event, context) => {
       body: JSON.stringify({ 
         success: true, 
         message: 'Painting uploaded successfully',
-        painting: paintingData[0]
+        painting: paintingData // Return the data we prepared, not relying on the insert response
       })
     };
   } catch (error) {
+    console.error('Function error:', error);
     return { 
       statusCode: 500, 
       body: JSON.stringify({ error: error.message }) 

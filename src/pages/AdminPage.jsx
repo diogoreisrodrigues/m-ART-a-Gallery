@@ -79,7 +79,7 @@ function AdminPage() {
       setMessage({ type: 'success', text: 'Painting uploaded successfully!' });
     } catch (error) {
       console.error('Upload error:', error);
-      setMessage({ type: 'error', text: error.message });
+      setMessage({ type: 'error', text: error.message || 'An unknown error occurred' });
     } finally {
       setIsUploading(false);
     }
