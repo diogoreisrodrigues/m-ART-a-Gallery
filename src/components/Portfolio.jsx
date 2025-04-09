@@ -3,12 +3,16 @@ import PortfolioCSS from "../css/Portfolio.module.css";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import PaintingPopup from "./PaintingPopup";
+import LoadingScreen from "./LoadingScreen";
+// Import your local data as a fallback
+import PaintingsData from "../data/PaintingsData";
 
 function Portfolio() {
   const [selectedPainting, setSelectedPainting] = useState(null);
   const [paintings, setPaintings] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [usingFallback, setUsingFallback] = useState(false);
 
   useEffect(() => {
     // Fetch paintings from our serverless function
@@ -22,12 +26,25 @@ function Portfolio() {
         }
         
         const data = await response.json();
-        setPaintings(data);
+        if (data && data.length > 0) {
+          setPaintings(data);
+        } else {
+          // If no paintings from API, use local data
+          console.log('No paintings from API, using local data');
+          setUsingFallback(true);
+          setPaintings(PaintingsData || []);
+        }
       } catch (err) {
         console.error('Error fetching paintings:', err);
-        setError('Failed to load paintings. Please try again later.');
+        setError('Using local paintings data as fallback.');
+        setUsingFallback(true);
+        // Use local data as fallback
+        setPaintings(PaintingsData || []);
       } finally {
-        setLoading(false);
+        // Add a slight delay to make the loading screen visible even on fast connections
+        setTimeout(() => {
+          setLoading(false);
+        }, 800);
       }
     };
 
@@ -50,11 +67,15 @@ function Portfolio() {
   };
 
   if (loading) {
-    return <div className={PortfolioCSS.loading}>Loading gallery...</div>;
+    return <LoadingScreen />;
   }
 
-  if (error) {
+  if (error && !usingFallback) {
     return <div className={PortfolioCSS.error}>{error}</div>;
+  }
+
+  if (paintings.length === 0) {
+    return <div className={PortfolioCSS.message}>No paintings to display yet. Visit the admin page to add some!</div>;
   }
 
   // Split paintings into three columns for masonry layout
@@ -64,33 +85,38 @@ function Portfolio() {
 
   return (
     <div className={PortfolioCSS.masonryContainer}>
+      {usingFallback && (
+        <div className={PortfolioCSS.fallbackMessage}>
+          Using local data - API connection not available
+        </div>
+      )}
       <div className={PortfolioCSS.masonryColumn}>
-        {column1.map((painting) => (
+        {column1.map((painting, idx) => (
           <ImageWrapper 
-            key={painting.id} 
-            src={painting.image_url} 
-            index={painting.id}
+            key={painting.id || idx} 
+            src={usingFallback ? require(`../assets/images/${painting.path}`) : painting.image_url} 
+            index={idx}
             onClick={() => handleImageClick(painting)}
           />
         ))}
       </div>
       <div className={PortfolioCSS.masonryColumn}>
-        {column2.map((painting) => (
+        {column2.map((painting, idx) => (
           <ImageWrapper 
-            key={painting.id} 
-            src={painting.image_url} 
-            index={painting.id}
+            key={painting.id || idx} 
+            src={usingFallback ? require(`../assets/images/${painting.path}`) : painting.image_url} 
+            index={idx}
             onClick={() => handleImageClick(painting)}
           />
         ))}
       </div>
       
       <div className={PortfolioCSS.masonryColumn}>
-        {column3.map((painting) => (
+        {column3.map((painting, idx) => (
           <ImageWrapper 
-            key={painting.id} 
-            src={painting.image_url} 
-            index={painting.id}
+            key={painting.id || idx} 
+            src={usingFallback ? require(`../assets/images/${painting.path}`) : painting.image_url} 
+            index={idx}
             onClick={() => handleImageClick(painting)}
           />
         ))}
@@ -100,7 +126,9 @@ function Portfolio() {
         <PaintingPopup 
           painting={{
             ...selectedPainting,
-            imageSource: selectedPainting.image_url
+            imageSource: usingFallback 
+              ? require(`../assets/images/${selectedPainting.path}`) 
+              : selectedPainting.image_url
           }} 
           onClose={handleClosePopup} 
           onInterest={handleInterest}
@@ -136,7 +164,7 @@ function ImageWrapper({ src, index, onClick }) {
     >
       <img
         src={src}
-        alt={`Portfolio ${index}`}
+        alt={`Portfolio ${index + 1}`}
         className={PortfolioCSS.image}
         draggable="false"
       />

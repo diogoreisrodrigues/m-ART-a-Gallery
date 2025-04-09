@@ -53,9 +53,8 @@ A modern, responsive web application showcasing the artistic works of Marta Viei
 ## Deploy Project
 
    ```bash
-   npm run deploy
+   netlify deploy --prod
    ```
-
 
 ## Contact
 
