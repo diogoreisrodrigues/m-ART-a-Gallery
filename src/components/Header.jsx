@@ -42,7 +42,11 @@ function Header() {
               About
             </Link>
           </li>
-          
+          <li>
+            <Link to="/process" onClick={handleLinkClick}>
+              Process
+            </Link>
+          </li>
         </ul>
       </nav>
     </div>

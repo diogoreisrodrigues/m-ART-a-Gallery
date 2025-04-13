@@ -8,6 +8,10 @@ function AdminPage() {
     title: "",
     description: "",
     year: new Date().getFullYear().toString(),
+    dimensions: "",
+    price: "",
+    medium: "",
+    status: "Available",
     adminPassword: ""
   });
   const [previewImages, setPreviewImages] = useState([]);
@@ -169,17 +173,62 @@ function AdminPage() {
               rows="4"
             ></textarea>
           </div>
-          
-          <div className={styles.formGroup}>
-            <label>Admin Password:</label>
-            <input 
-              type="password" 
-              name="adminPassword" 
-              value={painting.adminPassword} 
-              onChange={handleInputChange}
-              required
-            />
-          </div>
+                <div className={styles.formGroup}>
+                  <label>Dimensions:</label>
+                  <input 
+                    type="text" 
+                    name="dimensions" 
+                    value={painting.dimensions} 
+                    onChange={handleInputChange}
+                    placeholder="e.g., 24 x 36 inches"
+                  />
+                </div>
+                
+                <div className={styles.formGroup}>
+                  <label>Price (€):</label>
+                  <input 
+                    type="number" 
+                    name="price" 
+                    value={painting.price} 
+                    onChange={handleInputChange}
+                    placeholder="Leave empty if not for sale"
+                  />
+                </div>
+                
+                <div className={styles.formGroup}>
+                  <label>Medium:</label>
+                  <input 
+                    type="text" 
+                    name="medium" 
+                    value={painting.medium} 
+                    onChange={handleInputChange}
+                    placeholder="e.g., Oil on canvas"
+                  />
+                </div>
+                
+                <div className={styles.formGroup}>
+                  <label>Status:</label>
+                  <select 
+                    name="status" 
+                    value={painting.status} 
+                    onChange={handleInputChange}
+                  >
+                    <option value="Available">Available</option>
+                    <option value="Sold">Sold</option>
+                    <option value="Not for sale">Not for sale</option>
+                  </select>
+                </div>
+                
+                <div className={styles.formGroup}>
+                  <label>Admin Password:</label>
+                  <input 
+                    type="password" 
+                    name="adminPassword" 
+                    value={painting.adminPassword} 
+                    onChange={handleInputChange}
+                    required
+                  />
+                </div>
           
           <button 
             type="submit"

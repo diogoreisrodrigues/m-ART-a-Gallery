@@ -8,6 +8,7 @@ import HomePage from "./pages/HomePage";
 import AdminPage from "./pages/AdminPage";
 import VirtualGallery from "./pages/VirtualGallery";
 import CommissionsPage from "./pages/CommissionsPage";
+import ProcessPage from "./pages/ProcessPage";
 
 const App = () => {
   useEffect(() => {
@@ -32,6 +33,7 @@ const App = () => {
           <Route path="/virtual-gallery" element={<VirtualGallery />} />
           <Route path="/admin-marta-secret" element={<AdminPage />} />
           <Route path="/commissions" element={<CommissionsPage />} />
+          <Route path="/process" element={<ProcessPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>

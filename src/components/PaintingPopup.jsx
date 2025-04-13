@@ -167,13 +167,35 @@ const PaintingPopup = ({ painting, onClose, onInterest }) => {
           <div className={styles.details}>
             <h2 className={styles.title}>{displayPainting.title}</h2>
             <p className={styles.year}>{displayPainting.year}</p>
+            
+            {displayPainting.medium && (
+              <p className={styles.medium}>{displayPainting.medium}</p>
+            )}
+            
+            {displayPainting.dimensions && (
+              <p className={styles.dimensions}>{displayPainting.dimensions}</p>
+            )}
+            
+            {displayPainting.status && (
+              <p className={`${styles.status} ${styles[displayPainting.status.toLowerCase().replace(/\s+/g, '')]}`}>
+                {displayPainting.status}
+              </p>
+            )}
+            
+            {displayPainting.price && displayPainting.status === 'Available' && (
+              <p className={styles.price}>€{displayPainting.price}</p>
+            )}
+            
             <p className={styles.description}>{displayPainting.description}</p>
-            <button 
-              className={styles.interestButton}
-              onClick={() => onInterest(displayPainting)}
-            >
-              I'm Interested
-            </button>
+            
+            {displayPainting.status === 'Available' && (
+              <button 
+                className={styles.interestButton}
+                onClick={() => onInterest(displayPainting)}
+              >
+                I'm Interested
+              </button>
+            )}
           </div>
         </div>
       </div>

@@ -93,8 +93,51 @@
   .year {
     font-size: 1rem;
     color: #556477;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     font-style: italic;
+  }
+  
+  .medium {
+    font-size: 1rem;
+    color: #556477;
+    margin-bottom: 10px;
+  }
+  
+  .dimensions {
+    font-size: 1rem;
+    color: #556477;
+    margin-bottom: 10px;
+  }
+  
+  .status {
+    font-size: 1.1rem;
+    font-weight: 600;
+    padding: 5px 10px;
+    border-radius: 4px;
+    display: inline-block;
+    margin-bottom: 15px;
+  }
+  
+  .available {
+    background-color: rgba(76, 175, 80, 0.2);
+    color: #2e7d32;
+  }
+  
+  .sold {
+    background-color: rgba(244, 67, 54, 0.2);
+    color: #c62828;
+  }
+  
+  .notforsale {
+    background-color: rgba(158, 158, 158, 0.2);
+    color: #616161;
+  }
+  
+  .price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ebaaaf;
+    margin-bottom: 20px;
   }
   
   .description {

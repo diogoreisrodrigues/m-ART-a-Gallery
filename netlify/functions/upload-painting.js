@@ -36,6 +36,10 @@ exports.handler = async (event, context) => {
       title: data.title,
       description: data.description || '',
       year: data.year || new Date().getFullYear().toString(),
+      dimensions: data.dimensions || '',
+      price: data.price || null,
+      medium: data.medium || '',
+      status: data.status || 'Available',
     };
 
     // Insert the painting record

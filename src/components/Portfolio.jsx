@@ -61,7 +61,17 @@ function Portfolio() {
 
   const handleInterest = (painting) => {
     const subject = `Interest in your artwork: ${painting.title}`;
-    const body = `Hi Marta,\n\nI'm interested in your artwork titled "${painting.title}".\n\nCould you please provide more information about it?\n\nThank you!`;
+    let body = `Hi Marta,\n\nI'm interested in your artwork titled "${painting.title}"`;
+    
+    if (painting.dimensions) {
+      body += ` (${painting.dimensions})`;
+    }
+    
+    if (painting.price) {
+      body += ` priced at €${painting.price}`;
+    }
+    
+    body += `.\n\nCould you please provide more information about it?\n\nThank you!`;
     
     window.location.href = `mailto:${encodeURIComponent("martavieira142004@gmail.com")}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   };
